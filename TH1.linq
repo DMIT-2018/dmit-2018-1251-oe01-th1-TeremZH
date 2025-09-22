@@ -24,7 +24,7 @@ ClubActivities
     )
     .Select(activity => new 
     {
-        StartDate = activity.StartDate.Value.ToString("yyyy-MM-dd h:mm:ss tt"),
+        StartDate = activity.StartDate.Value.ToString("yyyy-MM-dd h:mm:ss tt", System.Globalization.CultureInfo.InvariantCulture),
         Location = activity.OffCampus ? activity.Location : activity.CampusVenue.Location,
         Club = activity.Club.ClubName,
         Activity = activity.Name
