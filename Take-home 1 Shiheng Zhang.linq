@@ -35,6 +35,7 @@ ClubActivities
 
 /*Question2*/
 Programs
+	.Where(p => p.ProgramCourses.Count(pc => pc.Required) >= 22)
     .Select(p => new 
     {
         School = p.SchoolCode == "SAMIT" ? "School of Advance Media and IT" 
@@ -44,4 +45,5 @@ Programs
         RequiredCourseCount = p.ProgramCourses.Count(pc => pc.Required),
         OptionalCourseCount = p.ProgramCourses.Count(pc => !pc.Required)
     })
+	.OrderBy(p => p.Program)
     .Dump();
