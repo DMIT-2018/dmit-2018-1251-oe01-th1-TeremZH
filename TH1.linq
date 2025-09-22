@@ -15,6 +15,7 @@
   </Connection>
 </Query>
 
+/*Question1*/
 ClubActivities
     .Where(activity => 
         activity.StartDate.HasValue &&
@@ -22,6 +23,7 @@ ClubActivities
         activity.Name != "BTech Club Meeting" &&
         (activity.OffCampus || activity.CampusVenue.Location != "Scheduled Room")
     )
+	.OrderBy(a => a.StartDate)
     .Select(activity => new 
     {
         StartDate = activity.StartDate.Value.ToString("yyyy-MM-dd h:mm:ss tt", System.Globalization.CultureInfo.InvariantCulture),
@@ -29,5 +31,5 @@ ClubActivities
         Club = activity.Club.ClubName,
         Activity = activity.Name
     })
-    .OrderBy(a => a.StartDate)
     .Dump();
+
