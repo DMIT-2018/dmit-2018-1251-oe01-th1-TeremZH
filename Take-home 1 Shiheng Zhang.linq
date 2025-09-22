@@ -33,3 +33,15 @@ ClubActivities
     })
     .Dump();
 
+/*Question2*/
+Programs
+    .Select(p => new 
+    {
+        School = p.SchoolCode == "SAMIT" ? "School of Advance Media and IT" 
+               : p.SchoolCode == "SEET" ? "School of Electrical Engineering Technology" 
+               : "Unknown",
+        Program = p.ProgramName,
+        RequiredCourseCount = p.ProgramCourses.Count(pc => pc.Required),
+        OptionalCourseCount = p.ProgramCourses.Count(pc => !pc.Required)
+    })
+    .Dump();
