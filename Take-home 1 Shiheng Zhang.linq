@@ -63,9 +63,11 @@ Students
 
 /*Question4*/
 Employees
-    .Where(e => e.Position.Description == "Instructor" 
+	.Where(e => e.Position.Description == "Instructor" 
              && e.ReleaseDate == null 
              && e.ClassOfferings.Any())
+	.OrderByDescending(e => e.ClassOfferings.Count())
+    .ThenBy(e => e.LastName)
     .Select(e => new 
     {
         ProgramName = e.Program.ProgramName,
@@ -75,3 +77,5 @@ Employees
 					:"Low"
     })
     .Dump();
+	
+/*Question5*/
