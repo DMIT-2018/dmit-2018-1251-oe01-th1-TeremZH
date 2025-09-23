@@ -62,3 +62,16 @@ Students
     .Dump();
 
 /*Question4*/
+Employees
+    .Where(e => e.Position.Description == "Instructor" 
+             && e.ReleaseDate == null 
+             && e.ClassOfferings.Any())
+    .Select(e => new 
+    {
+        ProgramName = e.Program.ProgramName,
+        FullName = e.FirstName + " " + e.LastName,
+        WorkLoad = e.ClassOfferings.Count() > 24 ? "High"
+				 : e.ClassOfferings.Count() > 8 ? "Med" 
+					:"Low"
+    })
+    .Dump();
